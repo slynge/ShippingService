@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.1.2" />
     <PackageReference Include="Aspire.RabbitMQ.Client.v7" Version="9.5.2" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
-    <PackageReference Include="Scalar.AspNetCore" Version="2.13.9" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SystemIntegration09.ServiceDefaults\SystemIntegration09.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\SystemIntegration10.ServiceDefaults\SystemIntegration10.ServiceDefaults.csproj" />
   </ItemGroup>
 
   <ItemGroup>

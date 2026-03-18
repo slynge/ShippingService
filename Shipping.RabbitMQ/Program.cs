@@ -1,4 +1,4 @@
-namespace Shipping;
+namespace Shipping.RabbitMQ;
 
 public class Program
 {
@@ -6,7 +6,6 @@ public class Program
     {
         var builder = Host.CreateApplicationBuilder(args);
         builder.AddServiceDefaults();
-        builder.AddRabbitMQClient("messaging");
         builder.Services.AddHostedService<Worker>();
 
         var host = builder.Build();

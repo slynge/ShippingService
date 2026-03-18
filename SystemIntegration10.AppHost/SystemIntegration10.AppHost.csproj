@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.1.2" />
     <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="13.1.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Order.Api\Order.Api.csproj" />
-    <ProjectReference Include="..\Shipping\Shipping.csproj" />
+    <ProjectReference Include="..\Order.Api\Orders.Api.csproj" />
+    <ProjectReference Include="..\Shipping.Api\Shipping.Api.csproj" />
+    <ProjectReference Include="..\Shipping.RabbitMQ\Shipping.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

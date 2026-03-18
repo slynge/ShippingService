@@ -1,10 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using Orders.Api.data;
-using Orders.Api.Models;
-using Orders.Api.Services;
-using Scalar.AspNetCore;
 
-namespace Orders.Api;
+using Shipping.Api.Data;
+
+namespace Shipping.Api;
 
 public class Program
 {
@@ -12,14 +9,15 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.AddServiceDefaults();
+
         builder.AddRabbitMQClient("messaging");
-        builder.AddNpgsqlDbContext<OrdersContext>("postgresdb");
+        builder.AddNpgsqlDbContext<ShippingContext>("postgresdb");
         // Add services to the container.
 
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
-        builder.Services.AddScoped<IShippingMessageSender, ShippingMessageSender>();
+
         var app = builder.Build();
 
         app.MapDefaultEndpoints();
@@ -28,7 +26,6 @@ public class Program
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
-            app.MapScalarApiReference();
         }
 
         app.UseHttpsRedirection();
@@ -37,14 +34,14 @@ public class Program
 
 
         app.MapControllers();
+
         if (app.Environment.IsDevelopment())
         {
             // Ensure database is created and seeded
             using var scope = app.Services.CreateScope();
-            var context = scope.ServiceProvider.GetRequiredService<OrdersContext>();
+            var context = scope.ServiceProvider.GetRequiredService<ShippingContext>();
             await context.Database.EnsureCreatedAsync();
         }
-
 
         app.Run();
     }

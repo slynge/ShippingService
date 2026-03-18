@@ -1,9 +1,0 @@
-<Solution>
-  <Folder Name="/Solution Items/">
-    <File Path="README.md" />
-  </Folder>
-  <Project Path="Order.Api/Order.Api.csproj" />
-  <Project Path="Shipping/Shipping.csproj" />
-  <Project Path="SystemIntegration09.AppHost/SystemIntegration09.AppHost.csproj" />
-  <Project Path="SystemIntegration09.ServiceDefaults/SystemIntegration09.ServiceDefaults.csproj" />
-</Solution>
