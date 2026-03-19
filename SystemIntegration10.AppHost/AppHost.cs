@@ -6,27 +6,24 @@ var rabbitmq = builder.AddRabbitMQ("messaging", username, password)
     .WithLifetime(ContainerLifetime.Persistent)
     .WithManagementPlugin();
 
-var pgpassword = builder.AddParameter("postgresql-password", true);
+var pgpassword = builder.AddParameter("postgresql-password", "1234asdf");
 var postgres = builder.AddPostgres("postgres", password: pgpassword)
     .WithPgWeb()
     .WithDataVolume(isReadOnly: false)
     .WithLifetime(ContainerLifetime.Persistent);
-var postgresdb = postgres.AddDatabase("postgresdb");
+var ordersDb = postgres.AddDatabase("ordersdb");
+var shippingDb = postgres.AddDatabase("shippingdb");
 
 builder.AddProject<Projects.Orders_Api>("order-api")
     .WithReference(rabbitmq)
     .WaitFor(rabbitmq)
-    .WithReference(postgresdb)
-    .WaitFor(postgresdb);
+    .WithReference(ordersDb)
+    .WaitFor(ordersDb);
 
 builder.AddProject<Projects.Shipping_Api>("shipping")
     .WithReference(rabbitmq)
     .WaitFor(rabbitmq)
-    .WithReference(postgresdb)
-    .WaitFor(postgresdb);
-
-builder.AddProject<Projects.Shipping_Api>("shipping-api");
-
-builder.AddProject<Projects.Shipping_RabbitMQ>("shipping-rabbitmq");
+    .WithReference(shippingDb)
+    .WaitFor(shippingDb);
 
 builder.Build().Run();

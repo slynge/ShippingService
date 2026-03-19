@@ -6,7 +6,7 @@ namespace Shipping.Api.Models
     {
         [Key]
         public Guid ShippingId { get; set; }
-        public Guid OrderId { get; set; }
+        public Guid? OrderId { get; set; }
         public String ShippingAdress { get; set; } = string.Empty;
         public ShippingStatus Status { get; set; } = ShippingStatus.Pending;
 

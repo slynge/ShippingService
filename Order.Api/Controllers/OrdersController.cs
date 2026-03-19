@@ -34,14 +34,13 @@ namespace Orders.Api.Controllers
             try
             {
                 await _sender.SendMessageAsync(order);
-                _logger.LogInformation("Message sent to RabbitMQ for Order ID: {OrderId}", order.Id);
             }
             catch (Exception exception)
             {
                 _logger.LogError(exception, "Failed to send message to RabbitMQ");
 
             }
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+            return CreatedAtAction("PostOrder", new { id = order.Id }, order);
         }
 
         // DELETE: api/Orders/5

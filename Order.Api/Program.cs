@@ -13,7 +13,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.AddServiceDefaults();
         builder.AddRabbitMQClient("messaging");
-        builder.AddNpgsqlDbContext<OrdersContext>("postgresdb");
+        builder.AddNpgsqlDbContext<OrdersContext>("ordersdb");
         // Add services to the container.
 
         builder.Services.AddControllers();

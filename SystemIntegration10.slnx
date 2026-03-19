@@ -4,7 +4,6 @@
   </Folder>
   <Project Path="Order.Api/Orders.Api.csproj" />
   <Project Path="Shipping.Api/Shipping.Api.csproj" />
-  <Project Path="Shipping.RabbitMQ/Shipping.RabbitMQ.csproj" />
   <Project Path="SystemIntegration10.AppHost/SystemIntegration10.AppHost.csproj" />
   <Project Path="SystemIntegration10.ServiceDefaults/SystemIntegration10.ServiceDefaults.csproj" />
 </Solution>

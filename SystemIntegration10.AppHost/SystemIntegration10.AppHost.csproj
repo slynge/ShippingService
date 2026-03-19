@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Order.Api\Orders.Api.csproj" />
     <ProjectReference Include="..\Shipping.Api\Shipping.Api.csproj" />
-    <ProjectReference Include="..\Shipping.RabbitMQ\Shipping.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>
