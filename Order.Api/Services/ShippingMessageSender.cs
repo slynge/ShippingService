@@ -28,8 +28,8 @@ public class ShippingMessageSender : IShippingMessageSender {
                 body: body);
             _logger.LogInformation("Sent message to RabbitMQ: {Message}", jsonOrder);
         }
-        catch (Exception exception) {
-            _logger.LogError(exception, "Failed to send message to RabbitMQ");
+        catch (Exception e) {
+            throw new Exception("Failed to send message to RabbitMQ");
         }
     }
 }

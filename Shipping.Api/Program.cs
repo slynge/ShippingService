@@ -34,8 +34,7 @@ public class Program {
         
         app.MapControllers();
 
-        if (app.Environment.IsDevelopment())
-        {
+        if (app.Environment.IsDevelopment()) {
             // Ensure database is created and seeded
             using var scope = app.Services.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<ShippingContext>();

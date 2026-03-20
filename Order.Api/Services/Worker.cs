@@ -22,14 +22,14 @@ public class Worker : BackgroundService {
 				outboxMessages = outboxMessages.FindAll(message => message.ProcessedAtUTC is null);
 				outboxMessages.Sort((message1, message2) => message1.CreatedAtUTC.CompareTo(message2.CreatedAtUTC));
 				try {
-					OutboxMessage? outboxMessage = outboxMessages[0];
+					OutboxMessage outboxMessage = outboxMessages[0];
 					await shippingMessageSender.SendMessageAsync(outboxMessage.Payload);
 					outboxMessage.ProcessedAtUTC = DateTime.UtcNow;
 					ordersDb.OutboxMessages.Update(outboxMessage);
 					await ordersDb.SaveChangesAsync(stoppingToken);
 				}
 				catch (Exception exception) {
-					_logger.LogInformation(exception.Message);
+					_logger.LogError(exception.Message);
 				}
 			}
 		}
